@@ -1,7 +1,11 @@
 import axios from 'axios'
 import React , {useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function DataFetching() {
+
+    const navigate = useNavigate();
+
     const [posts , setPost] = useState({})
     const [id, setId] = useState(1)
     const [idFromButtonClick, setIdFromButtonClick] = useState(1)
@@ -9,6 +13,7 @@ function DataFetching() {
     const handleClick = () => {
         setIdFromButtonClick(id)
     }
+
 
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/posts/${idFromButtonClick}`)
@@ -48,6 +53,8 @@ function DataFetching() {
                 })
             } */}
         </ul>
+
+        <button onClick={() => navigate(-1)}>Get All Post</button>
       
     </div>
   )
